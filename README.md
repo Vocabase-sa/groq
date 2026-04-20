@@ -98,6 +98,28 @@ codex mcp list
 
 Une fois connecté, Codex pourra appeler les tools `list_models`, `generate_text`, `chat_completion` et `embed_text`.
 
+## Brancher le serveur MCP dans Claude Code
+
+Ajouter le serveur MCP au scope utilisateur via la CLI `claude` :
+
+```bash
+claude mcp add groq --scope user -e GROQ_API_KEY=clef_groq -- node "chemin/vers/dist/mcp.js"
+```
+
+Exemple concret sous Windows :
+
+```bash
+claude mcp add groq --scope user -e GROQ_API_KEY=gsk_xxxxxxxxxxxx -- node "C:/Users/FrédéricJamoulle/Claude/mcp/groq/dist/mcp.js"
+```
+
+Vérifier l'enregistrement :
+
+```bash
+claude mcp list
+```
+
+Claude Code pourra alors appeler les tools `list_models`, `generate_text`, `chat_completion` et `embed_text` via le préfixe `mcp__groq__`.
+
 ## Fallback de modèles
 
 Le serveur essaie d'abord le modèle demandé. En cas d'échec temporaire côté fournisseur, il bascule automatiquement vers les modèles de `FALLBACK_MODELS`.
